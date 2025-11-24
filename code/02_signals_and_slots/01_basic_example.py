@@ -36,7 +36,7 @@ class Window(QWidget):
     #     What ever code you put here is
     #     executed when the button is clicked.
     
-    @Slot()
+    @Slot(bool)
     def on_button_clicked(self, checked):
         print('Button clicked,', 'checked:', checked)
         

@@ -44,7 +44,7 @@ class Window(QWidget):
     
     # 2 - Create the slot to handle radio button toggled() signal
     
-    @Slot()    
+    @Slot(str)    
     def on_button_toggled(self, color):
         
         self.label.setStyleSheet(

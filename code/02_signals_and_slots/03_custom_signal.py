@@ -44,7 +44,7 @@ class Window(QWidget):
     def on_button_clicked(self):
         print('Button clicked')
     
-    @Slot()
+    @Slot(int)
     def on_counter_changed(self, counter):
         print('Counter: ', counter)
         

@@ -17,17 +17,17 @@ class Window(QWidget):
         
         block_checkbox = QCheckBox('Block signals')
         block_checkbox.checkStateChanged.connect(
-            self.on_checked_state_changed)
+            self.on_check_state_changed)
         layout.addWidget(block_checkbox)
 
-    @Slot()
+    @Slot(bool)
     def on_button_clicked(self, checked):
         print('Button clicked,', 'checked:', checked)
     
     # Use QObject.blockSignals() to block/unblock a signal
     
-    @Slot()
-    def on_checked_state_changed(self, state):
+    @Slot(bool)
+    def on_check_state_changed(self, state):
         if state == Qt.CheckState.Checked:
             self.button.blockSignals(True)
             print('Signals blocked!')

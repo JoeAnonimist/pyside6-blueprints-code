@@ -1,4 +1,4 @@
-# QPushButton generates 'clicked' signals when you click it duh
+# QPushButton generates 'clicked' signals
 
 from random import randint
 import sys
