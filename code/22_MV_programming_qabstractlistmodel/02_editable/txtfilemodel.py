@@ -21,7 +21,7 @@ class TxtFileModel(QAbstractListModel):
         return len(self.txt_data)
     
     def data(self, index, role=Qt.ItemDataRole.DisplayRole) -> object|None:
-        if role == Qt.ItemDataRole.DisplayRole:
+        if role in [Qt.ItemDataRole.DisplayRole, Qt.ItemDataRole.EditRole]:
             return self.txt_data[index.row()]
         return None
     
