@@ -1,0 +1,390 @@
+[
+  {
+    "id": 1,
+    "firstname": "Silvana",
+    "lastname": "Malvino",
+    "profession": "worker",
+    "subordinates": [
+      {
+        "id": 2,
+        "firstname": "Shannah",
+        "lastname": "Chesna",
+        "profession": "worker",
+        "subordinates": [
+          {
+            "id": 3,
+            "firstname": "Tybie",
+            "lastname": "Bakerman",
+            "profession": "doctor",
+            "subordinates": [
+              {
+                "id": 4,
+                "firstname": "Inga",
+                "lastname": "Alcott",
+                "profession": "developer",
+                "subordinates": [
+                  {
+                    "id": 5,
+                    "firstname": "Ulrike",
+                    "lastname": "Cimbura",
+                    "profession": "firefighter",
+                    "subordinates": [
+                      {
+                        "id": 6,
+                        "firstname": "Lolita",
+                        "lastname": "Wenda",
+                        "profession": "developer",
+                        "subordinates": [
+                          {
+                            "id": 7,
+                            "firstname": "Rhea",
+                            "lastname": "Miller",
+                            "profession": "worker"
+                          },
+                          {
+                            "id": 8,
+                            "firstname": "James",
+                            "lastname": "Whitten",
+                            "profession": "doctor"
+                          },
+                          {
+                            "id": 9,
+                            "firstname": "Catherine",
+                            "lastname": "Moor",
+                            "profession": "firefighter"
+                          }
+                        ]
+                      },
+                      {
+                        "id": 10,
+                        "firstname": "Tara",
+                        "lastname": "Schmidt",
+                        "profession": "worker"
+                      },
+                      {
+                        "id": 11,
+                        "firstname": "Samantha",
+                        "lastname": "Bailey",
+                        "profession": "police officer"
+                      }
+                    ]
+                  },
+                  {
+                    "id": 12,
+                    "firstname": "Fiona",
+                    "lastname": "Knox",
+                    "profession": "doctor"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "firstname": "Donnie",
+    "lastname": "Atcliffe",
+    "profession": "worker",
+    "subordinates": [
+      {
+        "id": 14,
+        "firstname": "Kristan",
+        "lastname": "Bohlin",
+        "profession": "firefighter",
+        "subordinates": [
+          {
+            "id": 15,
+            "firstname": "Rosaline",
+            "lastname": "Adlare",
+            "profession": "worker",
+            "subordinates": [
+              {
+                "id": 16,
+                "firstname": "Ebonee",
+                "lastname": "Salvidor",
+                "profession": "firefighter",
+                "subordinates": [
+                  {
+                    "id": 17,
+                    "firstname": "James",
+                    "lastname": "Frothingham",
+                    "profession": "doctor",
+                    "subordinates": [
+                      {
+                        "id": 18,
+                        "firstname": "Lily",
+                        "lastname": "Sacks",
+                        "profession": "police officer"
+                      },
+                      {
+                        "id": 19,
+                        "firstname": "Lydia",
+                        "lastname": "Rashida",
+                        "profession": "developer"
+                      }
+                    ]
+                  },
+                  {
+                    "id": 20,
+                    "firstname": "Matthew",
+                    "lastname": "Brock",
+                    "profession": "police officer"
+                  }
+                ]
+              },
+              {
+                "id": 21,
+                "firstname": "Zoe",
+                "lastname": "Gallagher",
+                "profession": "doctor"
+              },
+              {
+                "id": 22,
+                "firstname": "Lena",
+                "lastname": "Gusman",
+                "profession": "firefighter"
+              }
+            ]
+          },
+          {
+            "id": 23,
+            "firstname": "Alvin",
+            "lastname": "Smith",
+            "profession": "developer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "firstname": "Gisela",
+    "lastname": "Norvol",
+    "profession": "police officer",
+    "subordinates": [
+      {
+        "id": 25,
+        "firstname": "Adelle",
+        "lastname": "Newell",
+        "profession": "worker",
+        "subordinates": [
+          {
+            "id": 26,
+            "firstname": "Minne",
+            "lastname": "Reneta",
+            "profession": "police officer",
+            "subordinates": [
+              {
+                "id": 27,
+                "firstname": "Lucas",
+                "lastname": "Deverell",
+                "profession": "firefighter",
+                "subordinates": [
+                  {
+                    "id": 28,
+                    "firstname": "Madalyn",
+                    "lastname": "Pond",
+                    "profession": "police officer",
+                    "subordinates": [
+                      {
+                        "id": 29,
+                        "firstname": "Zachary",
+                        "lastname": "Kensley",
+                        "profession": "worker"
+                      }
+                    ]
+                  },
+                  {
+                    "id": 30,
+                    "firstname": "Samuel",
+                    "lastname": "Quintanilla",
+                    "profession": "doctor"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": 31,
+            "firstname": "Pauline",
+            "lastname": "Ramos",
+            "profession": "developer"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "firstname": "Melanie",
+    "lastname": "Behre",
+    "profession": "developer",
+    "subordinates": [
+      {
+        "id": 33,
+        "firstname": "Amii",
+        "lastname": "Jefferey",
+        "profession": "police officer",
+        "subordinates": [
+          {
+            "id": 34,
+            "firstname": "Chickie",
+            "lastname": "Uird",
+            "profession": "doctor",
+            "subordinates": [
+              {
+                "id": 35,
+                "firstname": "Luci",
+                "lastname": "Lamoree",
+                "profession": "firefighter",
+                "subordinates": [
+                  {
+                    "id": 36,
+                    "firstname": "Lusa",
+                    "lastname": "Dimitris",
+                    "profession": "police officer",
+                    "subordinates": [
+                      {
+                        "id": 37,
+                        "firstname": "Chester",
+                        "lastname": "Jameson",
+                        "profession": "developer"
+                      },
+                      {
+                        "id": 38,
+                        "firstname": "Ember",
+                        "lastname": "Thorne",
+                        "profession": "doctor"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": 39,
+                "firstname": "Emma",
+                "lastname": "Rooney",
+                "profession": "firefighter"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "firstname": "Ellette",
+    "lastname": "Timon",
+    "profession": "firefighter",
+    "subordinates": [
+      {
+        "id": 41,
+        "firstname": "Nadine",
+        "lastname": "Bord",
+        "profession": "police officer",
+        "subordinates": [
+          {
+            "id": 42,
+            "firstname": "Nanete",
+            "lastname": "Stilwell",
+            "profession": "police officer",
+            "subordinates": [
+              {
+                "id": 43,
+                "firstname": "Judy",
+                "lastname": "Marden",
+                "profession": "police officer",
+                "subordinates": [
+                  {
+                    "id": 44,
+                    "firstname": "Alyssa",
+                    "lastname": "Adamsen",
+                    "profession": "police officer",
+                    "subordinates": [
+                      {
+                        "id": 45,
+                        "firstname": "Lily",
+                        "lastname": "Fischer",
+                        "profession": "doctor"
+                      }
+                    ]
+                  },
+                  {
+                    "id": 46,
+                    "firstname": "Olivia",
+                    "lastname": "Morgan",
+                    "profession": "firefighter"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "firstname": "Nataline",
+    "lastname": "Lipson",
+    "profession": "doctor",
+    "subordinates": [
+      {
+        "id": 48,
+        "firstname": "Rosabelle",
+        "lastname": "Sallyann",
+        "profession": "doctor",
+        "subordinates": [
+          {
+            "id": 49,
+            "firstname": "Candi",
+            "lastname": "Hanleigh",
+            "profession": "police officer",
+            "subordinates": [
+              {
+                "id": 50,
+                "firstname": "Eve",
+                "lastname": "Green",
+                "profession": "developer"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "firstname": "Maurene",
+    "lastname": "Brieta",
+    "profession": "worker",
+    "subordinates": [
+      {
+        "id": 52,
+        "firstname": "Meghann",
+        "lastname": "Boycey",
+        "profession": "firefighter",
+        "subordinates": [
+          {
+            "id": 53,
+            "firstname": "Anestassia",
+            "lastname": "Alarise",
+            "profession": "firefighter",
+            "subordinates": [
+              {
+                "id": 54,
+                "firstname": "Sidoney",
+                "lastname": "Hanshaw",
+                "profession": "police officer"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
