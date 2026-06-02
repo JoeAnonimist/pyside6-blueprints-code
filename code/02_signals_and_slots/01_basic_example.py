@@ -1,11 +1,11 @@
-# Signals are event notifications.
-# Slots are Python methods/functions.
-# A QPushButton is a button that you can push.
+# Signals are event notifications emitted by widgets.
+# Slots are Python methods/functions that respond to them.
+# connect() establishes the relationship between the two.
 
 import sys
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import (QApplication, 
-    QWidget, QPushButton, QVBoxLayout)
+    QWidget, QLabel, QPushButton, QVBoxLayout)
 
 
 class Window(QWidget):
@@ -14,38 +14,37 @@ class Window(QWidget):
 
         super().__init__()
         
+        self.setWindowTitle('Refresh Balance')
+        self.setMinimumWidth(150)
         layout = QVBoxLayout()
         self.setLayout(layout)
         
-        # 1 - Create the signal sender, ie. the QPushButton.
-        #     When you click it the button emits a signal.
+        # 1. Create the label.
+        #    We keep a reference so the slot can update it.
         
-        button = QPushButton('Click me!')
+        self.balance_label = QLabel('Balance: -')
+        layout.addWidget(self.balance_label)
         
-        # 3 - Connect the signal and the slot.
-        #     Notice there's no parentheses after self.on_button_clicked
-        #     This means you pass a Python function object
-        #     to the connect() method
+        # 2. Create the button.
+        #    Clicking it emits the clicked() signal.
         
-        button.clicked.connect(self.on_button_clicked)
+        self.button = QPushButton('Click me!')
+        layout.addWidget(self.button)
         
-        layout.addWidget(button)
+        # 3. Connect the signal to the slot.
+        #    Note there are no parentheses after on_refresh_clicked:
+        #    connect() expects a function object, not a function call.
         
-    # 2 - Create the slot. It's a simple method
-    #     that belongs to our Window class.
-    #     What ever code you put here is
-    #     executed when the button is clicked.
+        self.button.clicked.connect(self.refresh_balance)
     
-    @Slot(bool)
-    def on_button_clicked(self, checked):
-        print('Button clicked,', 'checked:', checked)
+    @Slot()
+    def refresh_balance(self):
+        self.balance_label.setText('Balance: $4,250,00')
         
 
 if __name__ == '__main__':
     
     app = QApplication(sys.argv)
-
     main_window = Window()
     main_window.show()
-    
     sys.exit(app.exec())
