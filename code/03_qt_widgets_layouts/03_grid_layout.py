@@ -1,10 +1,16 @@
-# QGridLayout lays out widgets, well, in a grid
-
 import sys
 
-from PySide6.QtCore import Slot
-from PySide6.QtWidgets import (QApplication, 
-    QWidget, QPushButton, QLabel, QGridLayout)
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import (QApplication, QWidget,
+    QPushButton, QLabel, QVBoxLayout, QGridLayout)
+
+
+KEYS = [
+    ('1', 0, 0), ('2', 0, 1), ('3', 0, 2),
+    ('4', 1, 0), ('5', 1, 1), ('6', 1, 2),
+    ('7', 2, 0), ('8', 2, 1), ('9', 2, 2),
+    ('*', 3, 0), ('0', 3, 1), ('#', 3, 2)
+]
 
 
 class Window(QWidget):
@@ -13,52 +19,53 @@ class Window(QWidget):
 
         super().__init__()
         
-        # 1 - Create the layout:
-        
-        layout = QGridLayout()
+        layout = QVBoxLayout()
         self.setLayout(layout)
         
-        # 2 - Create widgets and add them to the grid
-        # We create sixteen buttons in a 4x4 grid
-        # (0, 0) is the top left cell
-        # The first integer is the row number
-        # The second integer is the column number
+        self.display_label = QLabel()
+        font = self.display_label.font()
+        font.setPointSize(16)
+        font.setBold(True)
+        self.display_label.setFont(font)
+        self.display_label.setAlignment(Qt.AlignmentFlag.AlignRight)
+        layout.addWidget(self.display_label)
         
-        for r in range(4):
-            for c in range(4):
-                
-                button = QPushButton(f'Button {r}, {c}')
-                button.clicked.connect(self.on_button_clicked)
-                self.layout().addWidget(button, r, c)
-
-        # The label is put in row 4, column 0
-        # and spans one row and four columns. 
-
-        self.label = QLabel()
-       
-        layout.addWidget(self.label, 4, 0, 1, 4)
+        # 1. Create a QGridLayout`.
         
-    # The slot method
-
-    @Slot()    
-    def on_button_clicked(self):
+        keypad_layout = QGridLayout()
         
-        # Get a reference to the clicked button
-        # and its position in the grid view
-
-        clicked_button = self.sender()
-
-        index = self.layout().indexOf(clicked_button)
-        position = self.layout().getItemPosition(index)
-        r, c, _, _ = position
-        self.label.setText(f'Row: {r}, Column: {c}')
+        for key, row, col in KEYS:
+            
+            # 2. Create the buttons.
+            
+            button = QPushButton(key)
+            button.setFixedSize(60, 40)
+            
+            button.clicked.connect(
+                lambda checked, key=key: 
+                    self.update_display(key))
+            
+            # 3. Add each button to the grid.
+            
+            keypad_layout.addWidget(button, row, col)
+            
+        layout.addLayout(keypad_layout)
+        
+    def update_display(self, key):
+        if key == '*':
+            self.display_label.clear()
+        elif key == '#':
+            self.display_label.setText('DONE')
+        else:
+            text = self.display_label.text()
+            if text == 'DONE':
+                text = ''
+            self.display_label.setText(text + key)
 
 
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)
-
     main_window = Window()
     main_window.show()
-
     sys.exit(app.exec())
