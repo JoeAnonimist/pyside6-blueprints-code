@@ -1,46 +1,57 @@
 import sys
-from PySide6.QtCore import QSize, Qt
+from PySide6.QtCore import QSize
 from PySide6.QtGui import QPixmap, QMovie
-from PySide6.QtWidgets import (QApplication, 
-    QWidget, QLabel, QHBoxLayout)
+from PySide6.QtWidgets import QApplication, QWidget, QLabel, QHBoxLayout
+
 
 class Window(QWidget):
     
     def __init__(self):
 
         super().__init__()
+        self.setWindowTitle('Account Categories')
+        
         layout = QHBoxLayout()
         self.setLayout(layout)
         
-        # 1. Create a QPixmap object
-        #    Optionally, resize it.
+        # 1. Create QPixmap objects and a QMovie.
 
-        pixmap = QPixmap('image.png')
-        resized_pixmap = pixmap.scaledToWidth(
-            100, Qt.TransformationMode.SmoothTransformation)
+        housing_pixmap = QPixmap('housing.png')
+        services_pixmap = QPixmap('online-services.png')
+        utilities_pixmap = QPixmap('utilities.png')
         
-        # 2. Create a QLabel object
+        spinner_gif = QMovie('spinner.gif')
+        spinner_gif.setScaledSize(QSize(24, 24))
         
-        png_label = QLabel()
+        # 2. Create QLabel objects
         
-        # 3. Set the label's pixmap
+        housing_label = QLabel()
+        services_label = QLabel()
+        utilities_label = QLabel()
+        groceries_label = QLabel()
         
-        # Same steps for animated gif
+        housing_label.setToolTip('Housing')
+        services_label.setToolTip('Online Services')
+        utilities_label.setToolTip('Utilities')
+        groceries_label.setToolTip('Groceries (loading...)')
         
-        png_label.setPixmap(resized_pixmap)
-        layout.addWidget(png_label)
+        # 3. Set the labels' images.
         
-        animated_gif = QMovie('spinner.gif')
-        animated_gif.setScaledSize(QSize(100, 100))
-        animated_gif.start()
+        housing_label.setPixmap(housing_pixmap)
+        services_label.setPixmap(services_pixmap)
+        utilities_label.setPixmap(utilities_pixmap)
+        groceries_label.setMovie(spinner_gif)
+        spinner_gif.start()
         
-        gif_label = QLabel()
-        gif_label.setMovie(animated_gif)
-        layout.addWidget(gif_label)
+        layout.addWidget(housing_label)
+        layout.addWidget(services_label)
+        layout.addWidget(utilities_label)
+        layout.addWidget(groceries_label)
+
 
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)
-    main_window = Window()
-    main_window.show()
+    window = Window()
+    window.show()
     sys.exit(app.exec())
