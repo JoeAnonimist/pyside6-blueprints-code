@@ -19,31 +19,31 @@ class Window(QWidget):
         
         # 1. Create the source textedit instance
         
-        self.src = QTextEdit()
-        self.src.textChanged.connect(self.update_preview)
+        self.src_edit = QTextEdit()
+        self.src_edit.textChanged.connect(self.update_preview)
 
         mono = QFontDatabase.systemFont(
             QFontDatabase.SystemFont.FixedFont)
-        mono.setPointSize(11)
-        self.src.setFont(mono)
+        mono.setPointSize(9)
+        self.src_edit.setFont(mono)
         
         # 2. Create the preview textedit instance
         
-        self.preview = QTextEdit()
-        self.preview.setReadOnly(True)
-        self.preview.setStyleSheet('background-color: #f0f0f0;')
+        self.preview_edit = QTextEdit()
+        self.preview_edit.setReadOnly(True)
+        self.preview_edit.setStyleSheet('background-color: #f0f0f0;')
         
-        layout.addWidget(self.src)
-        layout.addWidget(self.preview)
+        layout.addWidget(self.src_edit)
+        layout.addWidget(self.preview_edit)
 
-        self.src.setText('### Enter Markdown Text\n\n')
+        self.src_edit.setText('### Monthly Budget Report Notes\n\n')
 
     # 3. Implement the slot to preview the entered text
 
     @Slot()
     def update_preview(self):
-        markdown_text = self.src.toPlainText()
-        self.preview.setMarkdown(markdown_text)
+        markdown_text = self.src_edit.toPlainText()
+        self.preview_edit.setMarkdown(markdown_text)
 
 
 if __name__ == '__main__':

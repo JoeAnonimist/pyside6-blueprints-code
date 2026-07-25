@@ -8,13 +8,17 @@ from PySide6.QtWidgets import (QApplication,
 
 class Window(QWidget):
     
-    # # A class-level constant for the stylesheet template
-    LABEL_STYLE = "background-color: rgba(0, 128, 0, {});"
+    # A constant for the stylesheet template
+    LABEL_STYLE = '''
+        background-color: rgba(255, 74, 0, {});
+        font-size: 18px;
+        font-weight: bold;
+    '''
     
     def __init__(self):
 
         super().__init__()
-        
+        self.resize(400, 250)
         layout = QVBoxLayout()
         self.setLayout(layout)
         
@@ -32,7 +36,7 @@ class Window(QWidget):
         
         self.slider.valueChanged.connect(self.change_opacity)
         
-        self.label = QLabel('QSlider demo')
+        self.label = QLabel('ALERT: Overdue payment!')
         self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.label.setStyleSheet(Window.LABEL_STYLE.format(255))
         

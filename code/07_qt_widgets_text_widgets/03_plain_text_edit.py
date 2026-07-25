@@ -3,9 +3,9 @@
 
 import sys
 from PySide6.QtCore import Slot
-from PySide6.QtGui import QFontDatabase
-from PySide6.QtWidgets import (QApplication,
-    QWidget, QVBoxLayout, QPlainTextEdit, QLabel)
+from PySide6.QtGui import QFontDatabase, QTextCursor
+from PySide6.QtWidgets import (QApplication, QWidget,
+    QVBoxLayout, QPlainTextEdit, QLabel)
 
 
 class Window(QWidget):
@@ -25,7 +25,7 @@ class Window(QWidget):
             QPlainTextEdit.LineWrapMode.NoWrap)
         mono = QFontDatabase.systemFont(
             QFontDatabase.SystemFont.FixedFont)
-        mono.setPointSize(11)
+        mono.setPointSize(9)
         self.editor.setFont(mono)
         
         # Labels displaying document stats.
@@ -41,7 +41,11 @@ class Window(QWidget):
         self.editor.textChanged.connect(self.update_char_count)
         self.editor.cursorPositionChanged.connect(self.update_position)
         
-        self.editor.setPlainText('print("Hello PySide6")')
+        self.editor.setPlainText(
+            'MAX_POSITION = 5000\n'
+            'MAX_ORDER_SIZE = 1000\n'
+            'BLOCK_AFTER = 15:30\n')
+        self.editor.moveCursor(QTextCursor.MoveOperation.End)
     
     # 2. Get the underlying QTextDocument properties
     #    Character count is directly available.
