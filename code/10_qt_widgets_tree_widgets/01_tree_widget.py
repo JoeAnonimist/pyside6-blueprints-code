@@ -1,30 +1,28 @@
 import sys
 from PySide6.QtCore import Slot, Qt
-from PySide6.QtWidgets import (QApplication,
-    QWidget, QVBoxLayout, QTreeWidget,
-    QTreeWidgetItem, QLabel)
+from PySide6.QtWidgets import (QApplication, QWidget,
+    QVBoxLayout, QTreeWidget, QTreeWidgetItem, QLabel)
 
 
 tree_data = (
-    "Application Settings", "", [
-        ("General", "", [
-            ("Application Name", "MyBackup", []),
-            ("Version", "2.4.1", []),
-            ("Language", "English (US)", []),
-            ("Check for updates", True, []),
-            ("Start on system boot", False, []),
-            ("Log level", "Info", []),
+    'Application Settings', '', [
+        ('General', '', [
+            ('Application Name', 'Personal Finance Manager', []),
+            ('Version', '3.2.0', []),
+            ('Base Currency', 'USD', []),
+            ('Fiscal Year Start', 'January', []),
+            ('Round Transactions to Cents', True, []),
+            ('Default Account', 'Checking', []),
         ]),
-        ("Notifications", "", [
-            ("Email alerts", True, []),
-            ("Recipient", "admin@example.com", []),
-            ("Send on success", False, []),
-            ("Send on failure", True, []),
-            ("Sound alert", "beep.wav", []),
-            ("Custom message", "Backup completed with issues", []),
-        ]),
-    ]
-)
+        ('Notifications', '', [
+            ('Low Balance Alerts', True, []),
+            ('Low Balance Threshold', '$100.00', []),
+            ('Large Transaction Alerts', True, []),
+            ('Large Transaction Threshold', '$500.00', []),
+            ('Weekly Summary Email', False, []),
+            ('Recipient', 'john.doe@example.com', []),
+        ])])
+
 
 
 class Window(QWidget):

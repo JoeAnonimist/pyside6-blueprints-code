@@ -11,7 +11,7 @@ class Window(QWidget):
     def __init__(self):
 
         super().__init__()
-        
+        self.resize(240, 80)
         layout = QVBoxLayout()
         self.setLayout(layout)
         
@@ -20,16 +20,15 @@ class Window(QWidget):
         self.combo_box = QComboBox()
         
         self.combo_box.addItems([
-            'Technology',
-            'Healthcare',
-            'Finance',
-            'Energy',
-            'Real Estate'])
+            'Landlord',
+            'Electric company',
+            'Internet provider',
+            'Auto insurance'])
         
         # 2. Enable the user to add items
         
         self.combo_box.model().sort(0)
-        self.combo_box.setCurrentIndex(1)
+        self.combo_box.setCurrentIndex(0)
         self.combo_box.setEditable(True)
         self.combo_box.setInsertPolicy(
             QComboBox.InsertPolicy.InsertAlphabetically)

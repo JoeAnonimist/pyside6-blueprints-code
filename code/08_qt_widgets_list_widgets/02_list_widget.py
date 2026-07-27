@@ -17,47 +17,47 @@ class Window(QWidget):
         layout = QVBoxLayout()
         self.setLayout(layout)
         
-        weather_conditions = [
-            ('☀️ Clear', 'Sunny skies with no cloud coverage'),
-            ('⛅ Partly Cloudy', 'Sun and clouds throughout the day'),
-            ('☁️ Cloudy', 'Overcast skies with full cloud coverage'),
-            ('🌧️ Rain', 'Precipitation with steady rainfall'),
-            ('⛈️ Thunderstorm', 'Heavy rain with lightning and thunder'),
-            ('❄️ Snow', 'Frozen precipitation and cold temperatures')
+        transactions = [
+            ('🛒 Groceries', 'Whole Foods, Jul 21, -$84.32'),
+            ('⚡ Electric Bill', 'City Power, Jul 18, -$112.50'),
+            ('💰 Salary Deposit', 'Acme Payroll, Jul 15, +$3,200.00'),
+            ('🍽️ Dining Out', 'The Copper Pot, Jul 20, -$46.75'),
+            ('🚗 Auto Insurance', 'Safe Insurance, Jul 12, -$98.00'),
+            ('🏠 Rent Payment', 'Acme Properties, Jul 1, -$1,450.00'),
         ]
         
         # 1. Create a list widget and add items to it.
         
-        self.weather_list = QListWidget()
+        self.transaction_list = QListWidget()
         
-        for name, description in weather_conditions:
-            item = QListWidgetItem(name)
-            item.setData(Qt.ItemDataRole.UserRole, description)
-            self.weather_list.addItem(item)
+        for description, details in transactions:
+            item = QListWidgetItem(description)
+            item.setData(Qt.ItemDataRole.UserRole, details)
+            self.transaction_list.addItem(item)
 
         self.selected_label = QLabel()
-        self.description_label = QLabel()
+        self.details_label = QLabel()
         self.selected_label.setStyleSheet("font-size: 24px;")
         
-        layout.addWidget(self.weather_list)
+        layout.addWidget(self.transaction_list)
         layout.addWidget(self.selected_label)
-        layout.addWidget(self.description_label)
+        layout.addWidget(self.details_label)
         
         # 3. Connect the signal to the slot.
 
-        self.weather_list.currentItemChanged.connect(
-            self.select_weather)
-        self.weather_list.setCurrentRow(0)
+        self.transaction_list.currentItemChanged.connect(
+            self.select_transaction)
+        self.transaction_list.setCurrentRow(0)
     
     # 3. Create the slot.
     
     @Slot(QListWidgetItem, QListWidgetItem)
-    def select_weather(self, current, previous):
+    def select_transaction(self, current, previous):
 
-        weather = current.data(Qt.ItemDataRole.DisplayRole)
-        description = current.data(Qt.ItemDataRole.UserRole)
-        self.selected_label.setText(weather)
-        self.description_label.setText(description)
+        transaction = current.data(Qt.ItemDataRole.DisplayRole)
+        details = current.data(Qt.ItemDataRole.UserRole)
+        self.selected_label.setText(transaction)
+        self.details_label.setText(details)
 
 
 if __name__ == '__main__':
