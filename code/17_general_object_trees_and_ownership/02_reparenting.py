@@ -50,7 +50,6 @@ class Window(QWidget):
     
     def switch_parent(self):
 
-        self.edit.parent().layout().removeWidget(self.edit)
         if self.edit.parent() == self.widget1:
             self.edit.setParent(self.widget2)
         else:

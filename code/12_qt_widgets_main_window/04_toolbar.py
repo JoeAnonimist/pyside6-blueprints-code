@@ -8,12 +8,12 @@ from PySide6.QtWidgets import (QApplication, QMainWindow,
     QTextEdit, QLabel, QMessageBox)
 
 
-class QEditor(QMainWindow):
+class Editor(QMainWindow):
     
     def __init__(self, parent=None):
 
         super().__init__(parent)
-        self.setWindowTitle('Acme Editor')
+        self.setWindowTitle('Financial Memo Editor')
         self.resize(500, 300)
 
         self.text_edit = QTextEdit()        
@@ -25,8 +25,8 @@ class QEditor(QMainWindow):
         self.statusBar().addPermanentWidget(self.charcount_label)
         
         self.text_edit.textChanged.connect(self.update_stats)
-        self.text_edit.selectionChanged.connect(
-            self.show_selection_size)
+        self.text_edit.cursorPositionChanged.connect(self.update_stats)
+        self.text_edit.selectionChanged.connect(self.show_selection_size)
         
         menu_bar = self.menuBar()
         file_menu = menu_bar.addMenu('&File')
@@ -53,18 +53,17 @@ class QEditor(QMainWindow):
         
         help_menu.addAction(about_action)
         
-        # 1 - Create the toolbar
+        # 1. Create the toolbar.
         
         file_toolbar = self.addToolBar('File')
         
-        # 2 - Add actions to it. We reuse the same actions
-        #     that we used for the menu.
+        # 2. Add actions to it. We reuse the same actions
+        #    that we used for the menu.
         
         file_toolbar.addAction(exit_action)
         file_toolbar.addAction(about_action)
         
-        # 3 - ... and that's about it. Here we just
-        #     set the icons to be displayed besides the text.
+        # 3. Set the icons to be displayed besides the text.
         
         file_toolbar.setToolButtonStyle(
             Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
@@ -87,13 +86,13 @@ class QEditor(QMainWindow):
         
     def show_messagebox(self):
         messagebox = QMessageBox()
-        messagebox.setText('QMainWindow Example\nVersion 1.1')
+        messagebox.setText('Financial Memo Editor\nVersion 1.1')
         messagebox.exec()
 
 
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)
-    editor = QEditor()
+    editor = Editor()
     editor.show()
     sys.exit(app.exec())

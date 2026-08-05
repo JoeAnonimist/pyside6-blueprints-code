@@ -2,7 +2,7 @@
 # and displays various other widgets inside itself.
 
 import sys
-
+from PySide6.QtCore import Slot
 from PySide6.QtWidgets import (QApplication,
     QWidget, QHBoxLayout, QVBoxLayout,
     QGroupBox, QRadioButton, QLabel)
@@ -13,66 +13,67 @@ class Window(QWidget):
     def __init__(self):
         
         super().__init__()
-
+        self.resize(340, 140)
         layout = QHBoxLayout()
 
         self.label = QLabel()
-        self.label.setFixedWidth(80)
         
-        # 1 - Create the group box
-        #     and add a layout to it. You can't 
-        #     add widgets directly to the group box.
+        # 1. Create the group box and add a layout to it.
+        #   You can't add widgets directly to the group box,
+        #   you have to use a layout.
         
         self.groupbox = QGroupBox()
-        self.groupbox.setTitle('Group box')
+        self.groupbox.setCheckable(True)
+        self.groupbox.setChecked(True)
+        self.groupbox.setTitle('Recurring Transfer')
 
         groupbox_layout = QVBoxLayout()
         self.groupbox.setLayout(groupbox_layout)
 
         # 2 - Add widgets to the layout.
 
-        self.radiobutton_1 = QRadioButton('Option 1')
-        self.radiobutton_2 = QRadioButton('Set checkable')
-        self.radiobutton_3 = QRadioButton('Set non-checkable')
+        self.weekly_radio = QRadioButton('Weekly')
+        self.monthly_radio = QRadioButton('Monthly')
+        self.quarterly_radio = QRadioButton('Quarterly')
 
-        groupbox_layout.addWidget(self.radiobutton_1)
-        groupbox_layout.addWidget(self.radiobutton_2)
-        groupbox_layout.addWidget(self.radiobutton_3)
+        groupbox_layout.addWidget(self.weekly_radio)
+        groupbox_layout.addWidget(self.monthly_radio)
+        groupbox_layout.addWidget(self.quarterly_radio)
+
+        # 4- Connect the signals with the slot.
         
-        # 4- Connect child widget signals with the slot
-        
-        self.radiobutton_1.toggled.connect(self.on_toggled)
-        self.radiobutton_2.toggled.connect(self.on_toggled)
-        self.radiobutton_3.toggled.connect(self.on_toggled)
-        
-        self.radiobutton_1.setChecked(True)
+        self.groupbox.toggled.connect(self.set_frequency)
+        self.weekly_radio.toggled.connect(self.set_frequency)
+        self.monthly_radio.toggled.connect(self.set_frequency)
+        self.quarterly_radio.toggled.connect(self.set_frequency)
 
         layout.addWidget(self.groupbox)
         layout.addWidget(self.label)
         
+        self.monthly_radio.setChecked(True)
+        
         self.setLayout(layout)
 
-    # 3 - Add slot method. If there are 
-    #     multiple radio buttons in a group box
-    #     only one can be checked, unlike checkboxes.
+    # 3 - Add the slot method.
     
-    def on_toggled(self):
+    @Slot()
+    def set_frequency(self):
 
-        if self.radiobutton_1.isChecked():
-            self.label.setText(self.radiobutton_1.text())
-        elif self.radiobutton_2.isChecked():
-            self.label.setText(self.radiobutton_2.text())
-            self.groupbox.setCheckable(True)
-        else:
-            self.label.setText(self.radiobutton_3.text())
-            self.groupbox.setCheckable(False)
+        if not self.groupbox.isChecked():
+            self.label.setText('Recurring transfer: Disabled')
+            return
+
+        if self.weekly_radio.isChecked():
+            self.label.setText('Recurring transfer: Weekly')
+        elif self.monthly_radio.isChecked():
+            self.label.setText('Recurring transfer: Monthly')
+        elif self.quarterly_radio.isChecked():
+            self.label.setText('Recurring transfer: Quarterly')
 
 
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)
-
     main_window = Window()
     main_window.show()
-
     sys.exit(app.exec())

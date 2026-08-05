@@ -3,26 +3,36 @@
 
 import sys
 from PySide6.QtCore import Slot
-from PySide6.QtWidgets import (QApplication,
-    QMainWindow, QTextEdit, QLabel)
+from PySide6.QtWidgets import (QApplication, QMainWindow,
+    QTextEdit, QLabel)
+
 
 class Editor(QMainWindow):
     
     def __init__(self, parent=None):
 
         super().__init__(parent)
-        self.setWindowTitle('Acme Editor')
+
+        self.setWindowTitle('Financial Memo Editor')
         self.resize(500, 300)
         self.text_edit = QTextEdit()        
         self.setCentralWidget(self.text_edit)
+        
+        # 1. Create the status bar widgets.
+        
         self.position_label = QLabel()
         self.charcount_label = QLabel()
+        
+        # 2. Add the widgets to the status bar.
+        
         self.statusBar().addWidget(self.position_label)
         self.statusBar().addPermanentWidget(self.charcount_label)
         
+        # 3. Connect the signals to the slots.
+        
         self.text_edit.textChanged.connect(self.update_stats)
-        self.text_edit.selectionChanged.connect(
-            self.show_selection_size)
+        self.text_edit.cursorPositionChanged.connect(self.update_stats)
+        self.text_edit.selectionChanged.connect(self.show_selection_size)
     
     @Slot()
     def update_stats(self):

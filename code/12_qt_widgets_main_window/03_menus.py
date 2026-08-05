@@ -17,7 +17,8 @@ class Editor(QMainWindow):
     def __init__(self, parent=None):
 
         super().__init__(parent)
-        self.setWindowTitle('Acme Editor')
+
+        self.setWindowTitle('Financial Memo Editor')
         self.resize(500, 300)
 
         self.text_edit = QTextEdit()        
@@ -29,29 +30,29 @@ class Editor(QMainWindow):
         self.statusBar().addPermanentWidget(self.charcount_label)
         
         self.text_edit.textChanged.connect(self.update_stats)
-        self.text_edit.selectionChanged.connect(
-            self.show_selection_size)
+        self.text_edit.cursorPositionChanged.connect(self.update_stats)
+        self.text_edit.selectionChanged.connect(self.show_selection_size)
         
         # You can access the main window QMenuBar
         # using QMainWindow.menuBar()
         
         menu_bar = self.menuBar()
         
-        # 1 - Create a QMenu instance using QMenuBar.addMenu() 
-        #     Use the ampersand to make keyboard shortcuts work.
+        # 1. Create a QMenu instance using QMenuBar.addMenu() 
+        #    Use the ampersand to make keyboard shortcuts work.
         
         file_menu = menu_bar.addMenu('&File')
         
-        # 2 - Create a QAction instance.
-        #     Connect a slot to its triggered signal.
-        #     Set Editor as QAction's parent.
+        # 2. Create a QAction instance.
+        #    Connect a slot to its triggered signal.
+        #    Set Editor as QAction's parent.
         
         exit_action = QAction(self)
         exit_action.setText('Exit')
         exit_action.setShortcut('Alt+X')
         exit_action.triggered.connect(QApplication.quit)
         
-        # 3 - Add action to the menu.
+        # 3. Add action to the menu.
         
         file_menu.addAction(exit_action)
         
@@ -84,7 +85,7 @@ class Editor(QMainWindow):
     @Slot()
     def show_messagebox(self):
         messagebox = QMessageBox()
-        messagebox.setText('QMainWindow Example\nVersion 1.0')
+        messagebox.setText('Financial Memo Editor\nVersion 1.0')
         messagebox.exec()
 
 

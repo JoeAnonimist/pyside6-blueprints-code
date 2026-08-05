@@ -4,7 +4,7 @@
 
 import sys
 from PySide6.QtCore import Qt, Slot
-from PySide6.QtGui import QAction, QIcon,QTextCharFormat, QFont
+from PySide6.QtGui import QAction, QIcon, QTextCharFormat, QFont
 from PySide6.QtWidgets import (QApplication, QMainWindow,
     QTextEdit, QLabel, QMessageBox, QVBoxLayout, QPushButton,
     QSpinBox, QDockWidget, QWidget)
@@ -15,12 +15,13 @@ class Editor(QMainWindow):
     def __init__(self, parent=None):
 
         super().__init__(parent)
-        self.setWindowTitle('Acme Editor')
+        self.setWindowTitle('Financial Memo Editor')
         self.resize(500, 300)
 
         self.text_edit = QTextEdit()
         self.text_edit.cursorPositionChanged.connect(
             self.update_dock_widgets)
+        self.text_edit.cursorPositionChanged.connect(self.update_stats)
         self.setCentralWidget(self.text_edit)
 
         self.position_label = QLabel()
@@ -59,7 +60,7 @@ class Editor(QMainWindow):
         file_toolbar.setToolButtonStyle(
             Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
         
-        # 1. Create the dock widget
+        # 1. Create the dock widget.
             
         dock_widget = QDockWidget('Formatting')
         dock_widget.setAllowedAreas(
@@ -102,7 +103,7 @@ class Editor(QMainWindow):
         container.setMinimumWidth(20)
         dock_widget.setWidget(container)
         
-        # 2. Add the dock widget to the main window
+        # 2. Add the dock widget to the main window.
         
         self.addDockWidget(
             Qt.DockWidgetArea.LeftDockWidgetArea, dock_widget)
@@ -126,10 +127,10 @@ class Editor(QMainWindow):
     @Slot()
     def show_messagebox(self):
         messagebox = QMessageBox()
-        messagebox.setText('QMainWindow Example\nVersion 1.2')
+        messagebox.setText('Financial Memo Editor\nVersion 1.2')
         messagebox.exec()
     
-    # 3. Handle the dock widget children signals
+    # 3. Handle the dock widget children signals.
     
     def update_bold(self, checked):
         char_format = QTextCharFormat()
@@ -152,10 +153,19 @@ class Editor(QMainWindow):
         self.text_edit.mergeCurrentCharFormat(char_format)
         
     def update_dock_widgets(self):
-        char_format = self.text_edit.textCursor().charFormat() 
+        char_format = self.text_edit.textCursor().charFormat()
+    
+        self.button_bold.blockSignals(True)
         self.button_bold.setChecked(char_format.font().bold())
+        self.button_bold.blockSignals(False)
+    
+        self.button_italic.blockSignals(True)
         self.button_italic.setChecked(char_format.font().italic())
+        self.button_italic.blockSignals(False)
+    
+        self.font_size_spinbox.blockSignals(True)
         self.font_size_spinbox.setValue(char_format.font().pointSize())
+        self.font_size_spinbox.blockSignals(False)
 
 
 if __name__ == '__main__':

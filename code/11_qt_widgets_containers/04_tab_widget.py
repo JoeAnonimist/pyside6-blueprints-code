@@ -1,8 +1,6 @@
-# The QTabWidget class provides a stack of tabbed widgets.  :S
-# ie. tabs
+# The QTabWidget class provides a stack of tabbed widgets.
 
 import sys
-
 from PySide6.QtWidgets import (QApplication, QWidget,
     QVBoxLayout, QTabWidget, QRadioButton, QCheckBox)
 
@@ -16,37 +14,31 @@ class Window(QWidget):
         layout = QVBoxLayout()
         self.setLayout(layout)
 
-        # 1 - Create the tab widget
+        # 1. Create the tab widget.
 
         self.tab_widget = QTabWidget()
 
-        # 2 - Create some widgets
-        #     A tab contains only one widget
-        #     but that widget can be a QWidget instance
-        #     or some other container.
+        # 2. Create the widgets.
 
-        # Tab 0 widgets:
+        notifications_widget = QWidget()
+        notifications_layout = QVBoxLayout()
+        notifications_layout.addWidget(QCheckBox('Low balance'))
+        notifications_layout.addWidget(QCheckBox('Large transaction'))
+        notifications_layout.addWidget(QCheckBox('Weekly summary'))
+        notifications_widget.setLayout(notifications_layout)
 
-        styles = QWidget()
-        styles_layout = QVBoxLayout()
-        styles_layout.addWidget(QCheckBox('Heading'))
-        styles_layout.addWidget(QCheckBox('Paragraph'))
-        styles_layout.addWidget(QCheckBox('List'))
-        styles.setLayout(styles_layout)
+        format_widget = QWidget()
+        format_layout = QVBoxLayout()
+        format_layout.addWidget(QRadioButton('PDF'))
+        format_layout.addWidget(QRadioButton('CSV'))
+        format_layout.addWidget(QRadioButton('OFX'))
+        format_widget.setLayout(format_layout)
 
-        # Tab 1 widgets
+        # 3. Add tabs to the tab widget.
 
-        margins = QWidget()
-        margins_layout = QVBoxLayout()
-        margins_layout.addWidget(QRadioButton('Normal'))
-        margins_layout.addWidget(QRadioButton('Wide'))
-        margins_layout.addWidget(QRadioButton('Narrow'))
-        margins.setLayout(margins_layout)
-
-        # 3 - Add tabs to the widget
-
-        self.tab_widget.addTab(styles, 'Styles')
-        self.tab_widget.addTab(margins, 'Margins')
+        self.tab_widget.addTab(
+            notifications_widget, 'Notifications Triggers')
+        self.tab_widget.addTab(format_widget, 'Export File Format')
 
         layout.addWidget(self.tab_widget)
 
@@ -54,8 +46,6 @@ class Window(QWidget):
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)
-
     main_window = Window()
     main_window.show()
-
     sys.exit(app.exec())

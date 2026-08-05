@@ -1,13 +1,11 @@
-# The QSplitter class implements a splitter widget.
 # A splitter lets the user control the size of 
 # child widgets by dragging the boundary between them. 
-# Any number of widgets may be controlled by a single splitter. 
 
 import sys
-
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import (QApplication, QWidget,
-    QVBoxLayout, QSplitter, QGroupBox, QRadioButton)
+from PySide6.QtWidgets import (QApplication, QWidget, QHBoxLayout,
+    QVBoxLayout, QSplitter, QGroupBox, QRadioButton, QListWidget,
+    QTableWidget, QTableWidgetItem, QTextEdit)
 
 
 class Window(QWidget):
@@ -15,60 +13,81 @@ class Window(QWidget):
     def __init__(self):
 
         super().__init__()
-        
+        self.resize(700, 300)
         layout = QVBoxLayout()
         self.setLayout(layout)
         
-        # 1 - Create a splitter
+        self.horizontal_radio = QRadioButton('Horizontal')
+        self.horizontal_radio.setChecked(True)
+        self.vertical_radio = QRadioButton('Vertical')
+        self.horizontal_radio.toggled.connect(self.on_toggled)
+        self.vertical_radio.toggled.connect(self.on_toggled)
+        
+        orientation_layout = QHBoxLayout()
+        orientation_layout.addWidget(self.horizontal_radio)
+        orientation_layout.addWidget(self.vertical_radio)
+        layout.addLayout(orientation_layout)
+
+        # 1. Create the splitter object.
         
         self.splitter = QSplitter()
         
-        # 2 - Create widgets
-        #     In this case it's three groupboxes
+        # 2. Create the child widgets.
         
-        groupbox_1 = QGroupBox('Orientation')
-        groupbox_1.setLayout(QVBoxLayout())
+        accounts_groupbox = QGroupBox('Accounts List')
+        accounts_groupbox.setLayout(QVBoxLayout())
         
-        # The radio buttons are just to demonstrate
-        # splitter orientation. I don't think changing
-        # splitter orientation at run time is that common.
+        self.accounts_list = QListWidget()
+        self.accounts_list.addItems([
+            'Checking', 'Savings', 'Credit Card'])
+        accounts_groupbox.layout().addWidget(self.accounts_list)
         
-        self.button_horizontal = QRadioButton('Horizontal')
-        self.button_horizontal.setChecked(True)
-        self.button_vertical = QRadioButton('Vertical')
+        transactions_groupbox = QGroupBox('Transactions')
+        transactions_groupbox.setLayout(QVBoxLayout())
+        self.transactions_table = QTableWidget(3, 3)
+        self.transactions_table.setHorizontalHeaderLabels(["Date", "Description", "Amount"])
+        data = [
+            ('July 27', 'UA', '-$1,189.50'),
+            ('July 25', 'Salary Deposit', '+$3,250.00'),
+            ('July 24', 'Whole Foods', '-$142.65')]
+       
+        for row, (date, desc, amount) in enumerate(data):
+            self.transactions_table.setItem(row, 0, QTableWidgetItem(date))
+            self.transactions_table.setItem(row, 1, QTableWidgetItem(desc))
+            self.transactions_table.setItem(row, 2, QTableWidgetItem(amount))
+
+        transactions_groupbox.layout().addWidget(self.transactions_table)
+
+        details_groupbox = QGroupBox('Details')
+        details_groupbox.setLayout(QVBoxLayout())
+        self.details_text = QTextEdit()
+        self.details_text.setReadOnly(True)
+        self.details_text.setPlainText(
+            'Account: Checking\n\n'
+            'Current Balance: $8,742.35\n'
+            'Available Balance: $8,742.35\n\n'
+            'Last updated: July 28, 2026')
+        details_groupbox.layout().addWidget(self.details_text)
         
-        self.button_horizontal.toggled.connect(self.on_toggled)
-        self.button_vertical.toggled.connect(self.on_toggled)
+        # 3. Add the widgets to the splitter.
         
-        groupbox_1.layout().addWidget(self.button_horizontal)
-        groupbox_1.layout().addWidget(self.button_vertical)
-        
-        groupbox_2 = QGroupBox('group box 2')
-        groupbox_3 = QGroupBox('group box 3')
-        
-        # 3 - Add widgets to the splitter
-        
-        self.splitter.addWidget(groupbox_1)
-        self.splitter.addWidget(groupbox_2)
-        self.splitter.addWidget(groupbox_3)
-        
+        self.splitter.addWidget(accounts_groupbox)
+        self.splitter.addWidget(transactions_groupbox)
+        self.splitter.addWidget(details_groupbox)
+        self.splitter.setSizes([120, 360, 200]) 
+
         layout.addWidget(self.splitter)
         
     def on_toggled(self):
-        
-        if self.button_horizontal.isChecked():
-            self.splitter.setOrientation(
-                Qt.Orientation.Horizontal)
+        if self.horizontal_radio.isChecked():
+            self.splitter.setOrientation(Qt.Orientation.Horizontal)
         else:
-            self.splitter.setOrientation(
-                Qt.Orientation.Vertical)
+            self.splitter.setOrientation(Qt.Orientation.Vertical)
 
 
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)
-
     main_window = Window()
     main_window.show()
-
     sys.exit(app.exec())
