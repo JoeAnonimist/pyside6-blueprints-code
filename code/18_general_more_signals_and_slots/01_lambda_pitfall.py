@@ -1,7 +1,7 @@
 import sys
-from PySide6.QtCore import Slot
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (QApplication, 
-    QWidget, QPushButton, QVBoxLayout)
+    QWidget, QCheckBox, QVBoxLayout)
 
 
 class Window(QWidget):
@@ -12,25 +12,34 @@ class Window(QWidget):
         layout = QVBoxLayout()
         self.setLayout(layout)
         
-        self.button = QPushButton('Click me!')
+        # 1. Create the checkbox
+        
+        self.checkbox = QCheckBox('Log State')
         
         '''
-        for i in range(5):
-            button.clicked.connect(
-                lambda : self.log_to_file(i))
-        '''
+        
+        # This will not work:
         
         for i in range(5):
-            self.button.clicked.connect(
-                lambda checked=self.button.isChecked(),
-                x=i: self.log_to_file(checked, x))
+            self.checkbox.checkStateChanged.connect(
+                lambda : self.log_to_file(self.checkbox.checkState(), i))
+        '''
+        
+        # 2. Use a loop to connect the signal.
+        #    Each lambda captures the arguments' current values.
+        
+        for i in range(5):
+            self.checkbox.checkStateChanged.connect(
+                lambda state, x=i:
+                    self.log_to_file(state, x))
 
-        layout.addWidget(self.button)
+        layout.addWidget(self.checkbox)
     
-    def log_to_file(self, checked, log_id):
-        print('Button clicked')
+    # 3. Log state change signals.
+    
+    def log_to_file(self, state, log_id):
         print(f'Logging to file no: {log_id}')
-        print(f'Checked: {checked}')
+        print(f'State: {state}')
         
 
 if __name__ == '__main__':
