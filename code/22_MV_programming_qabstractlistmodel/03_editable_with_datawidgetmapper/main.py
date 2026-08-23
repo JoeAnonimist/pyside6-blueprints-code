@@ -16,12 +16,11 @@ class Window(QWidget):
         self.setLayout(layout)
 
         self.model = TxtFileModel('data.txt')
-        QAbstractItemModelTester(self.model)
+        QAbstractItemModelTester(self.model,
+            QAbstractItemModelTester.FailureReportingMode.Warning)
         
         self.view = QListView()
         self.view.setModel(self.model)
-        self.view.selectionModel().currentChanged.connect(
-            self.sync_model_with_mapper)
         
         # 2. Create the widgets for displaying
         #    and editing the data
@@ -46,17 +45,17 @@ class Window(QWidget):
             QDataWidgetMapper.SubmitPolicy.ManualSubmit)
         self.mapper.toFirst()
         
+        # 5. Synchronize the model with the mapper
+        
+        self.view.selectionModel().currentChanged.connect(
+            self.mapper.setCurrentModelIndex)
+        
         horizontal_layout = QHBoxLayout()
         horizontal_layout.addWidget(self.lineedit)
         horizontal_layout.addWidget(self.submit_button)
         
         layout.addWidget(self.view)
         layout.addLayout(horizontal_layout)
-    
-    # 5. Synchronize the model with the mapper
-    
-    def sync_model_with_mapper(self, current, previous):
-        self.mapper.setCurrentIndex(current.row())
         
     def submit_new_value(self):
         self.mapper.submit()
