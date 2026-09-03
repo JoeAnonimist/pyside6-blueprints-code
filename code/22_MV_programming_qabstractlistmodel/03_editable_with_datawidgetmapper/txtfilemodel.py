@@ -1,5 +1,4 @@
-import csv
-from PySide6.QtCore import QAbstractListModel, Qt
+from PySide6.QtCore import QAbstractListModel, Qt, QModelIndex
 
 # 1. Create the model class
 
@@ -35,6 +34,8 @@ class TxtFileModel(QAbstractListModel):
         return False
     
     def flags(self, index) -> Qt.ItemFlags:
+        if not index.isValid():
+            return Qt.ItemFlags()
         return super().flags(index) | Qt.ItemFlags.ItemIsEditable
 
     def headerData(self, section, orientation, role) -> object|None:

@@ -35,9 +35,8 @@ class Window(QWidget):
         layout.addWidget(self.remove_button)
         
     def on_insert_sibling(self):
-        row = self.view.selectionModel().currentIndex().row()
         parent = self.view.selectionModel().currentIndex().parent()
-        self.model.insertRow(row + 1, parent)
+        self.model.insertRow(self.model.rowCount(parent), parent)
     
     def on_insert_child(self):
         parent = self.view.selectionModel().currentIndex()

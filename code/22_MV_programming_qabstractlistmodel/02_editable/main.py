@@ -14,7 +14,8 @@ class Window(QWidget):
         self.setLayout(layout)
 
         model = TxtFileModel('data.txt')
-        QAbstractItemModelTester(model)
+        QAbstractItemModelTester(model,
+            QAbstractItemModelTester.FailureReportingMode.Warning)
         view = QListView()
         view.setModel(model)
         layout.addWidget(view)

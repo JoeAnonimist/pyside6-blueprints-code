@@ -1,16 +1,21 @@
 import json
 
 
-# 1. Add a counter to the tree node class to set
-#    unique IDs to new nodes.
+# 1. Add a class-level `counter` to `TreeItem`
+#    to assign unique IDs to newly inserted nodes.
 
 class TreeItem:
     
+    COLUMNS = ['name', 'budget', 'actual']
     counter = 0
 
-    def __init__(self, data, parent=None):
+    def __init__(self, data=None, parent=None):
         
-        self.item_data = data
+        if data is not None:
+            self.item_data = data
+        else:
+            self.item_data = [''] * len(TreeItem.COLUMNS)
+
         self.parent = parent
         self.children = []
 
@@ -49,8 +54,7 @@ class TreeItem:
     
     def insert_child(self, row):
         TreeItem.counter += 1
-        print('In insert child', row)
-        data = [TreeItem.counter, '', '', '']
+        data = [f'New Item {TreeItem.counter}', '', '']
         item = TreeItem(data, self)
         self.children.insert(row, item)
             
@@ -60,7 +64,7 @@ class TreeItem:
     @staticmethod
     def build_tree(source):
         
-        root_item = TreeItem(['', '', '', ''], None)
+        root_item = TreeItem(parent=None)
         
         with open(source) as json_file:
             data = json.load(json_file)
@@ -68,26 +72,21 @@ class TreeItem:
                 tree_item = TreeItem.create_item(
                     json_object, root_item)
                 root_item.append_child(tree_item)
-                if 'subordinates' in json_object:
+                if 'children' in json_object:
                     TreeItem.add_children(json_object, tree_item)
                     
         return root_item
     
     @staticmethod
     def add_children(json_object, parent):
-        for child_json_object in json_object['subordinates']:
+        for child_json_object in json_object['children']:
             child = TreeItem.create_item(
                 child_json_object, parent)
             parent.append_child(child)
-            if 'subordinates' in child_json_object:
+            if 'children' in child_json_object:
                 TreeItem.add_children(child_json_object, child)
     
     @staticmethod
     def create_item(json_object, parent):
-        child = TreeItem(
-                [json_object['id'],
-                 json_object['firstname'],
-                 json_object['lastname'],
-                 json_object['profession']],
-                parent)
-        return child
+        data = [json_object.get(col) for col in TreeItem.COLUMNS]
+        return TreeItem(data, parent)

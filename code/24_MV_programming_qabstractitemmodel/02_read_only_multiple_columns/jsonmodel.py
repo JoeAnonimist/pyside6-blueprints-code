@@ -12,7 +12,7 @@ class JsonModel(QAbstractItemModel):
 
         super().__init__(parent)
         self.root_item = TreeItem.build_tree(source)
-        self.header = ['Id', 'First Name', 'Last Name', 'Profession']
+        self.header = [c.capitalize() for c in TreeItem.COLUMNS]
 
     def rowCount(self, parent=QModelIndex()):
         if parent.isValid():

@@ -41,6 +41,20 @@ class TxtFileModel(QAbstractListModel):
     # 4. Implement the flags() method
     
     def flags(self, index) -> Qt.ItemFlags:
+        '''
+        The tester specifically checks flags(QModelIndex())
+        and expects it to return either 0 (no drop support
+        on the root, which is correct for the simple
+        editable list) or exactly Qt.ItemIsDropEnabled
+        (to indicate drop-on-viewport support).
+        Returning ItemIsEditable (or any other flags)
+        for an invalid index violates this expectation,
+        as editable doesn't make sense on the root.
+        qt.modeltest: FAIL! flags == Qt::ItemIsDropEnabled || flags == 0 ()
+        returned FALSE (/home/qt/work/qt/qtbase/src/testlib/qabstractitemmodeltester.cpp:377)
+        '''
+        if not index.isValid():
+            return Qt.ItemFlags()
         return super().flags(index) | Qt.ItemFlags.ItemIsEditable
 
     def headerData(self, section, orientation, role) -> object | None:

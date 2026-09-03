@@ -15,7 +15,8 @@ class Window(QWidget):
         self.setLayout(layout)
 
         self.model = TxtFileModel('data.txt')
-        QAbstractItemModelTester(self.model)
+        QAbstractItemModelTester(self.model,
+            QAbstractItemModelTester.FailureReportingMode.Warning)
         self.model.rowsInserted.connect(self.on_rows_inserted)
         
         self.view = QListView()

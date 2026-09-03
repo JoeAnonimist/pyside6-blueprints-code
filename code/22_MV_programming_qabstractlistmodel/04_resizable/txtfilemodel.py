@@ -35,6 +35,8 @@ class TxtFileModel(QAbstractListModel):
         return False
     
     def flags(self, index) -> bool:
+        if not index.isValid():
+            return Qt.ItemFlags()
         return super().flags(index) | Qt.ItemFlags.ItemIsEditable
     
     # 2. Implement the insertRows() method

@@ -17,16 +17,16 @@ class TreeItem:
         with open(source) as json_file:
             data = json.load(json_file)
             for json_object in data:
-                name = f"{json_object['firstname']} {json_object['lastname']}"
+                name = f"{json_object['name']}"
                 tree_item = TreeItem(name, root_item)
-                if 'subordinates' in json_object:
+                if 'children' in json_object:
                     TreeItem.add_children(json_object, tree_item)
         return root_item
 
     @staticmethod
     def add_children(json_object, parent):
-        for child_json_object in json_object['subordinates']:
-            name = f"{child_json_object['firstname']} {child_json_object['lastname']}"
+        for child_json_object in json_object['children']:
+            name = f"{child_json_object['name']}"
             child = TreeItem(name, parent)
-            if 'subordinates' in child_json_object:
+            if 'children' in child_json_object:
                 TreeItem.add_children(child_json_object, child)
