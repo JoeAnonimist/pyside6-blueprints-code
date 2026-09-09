@@ -20,5 +20,5 @@ class AtmPool(QObject):
         finally:
             print(QThread.currentThread().objectName() +
                 ' done. (available before release: ' +
-                str(self.semaphore.available()))
+                str(self.semaphore.available()) + ')')
             self.semaphore.release()
