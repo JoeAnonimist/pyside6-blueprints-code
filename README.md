@@ -91,7 +91,7 @@ All published chapter code lives in the [`code/`](./code) folder.
 
 
 ### 15. Qt Style Sheets - QSS
-- 15.1 [Selector Types]9https://github.com/JoeAnonimist/pyside6-blueprints-code/blob/master/code/15_qt_style_sheets/01_selectors.py
+- 15.1 [Selector Types](https://github.com/JoeAnonimist/pyside6-blueprints-code/blob/master/code/15_qt_style_sheets/01_selectors.py
 - 15.2 [Properties](https://github.com/JoeAnonimist/pyside6-blueprints-code/blob/master/code/15_qt_style_sheets/02_properties.py)
 - 15.3 [Pseudo-States](https://github.com/JoeAnonimist/pyside6-blueprints-code/blob/master/code/15_qt_style_sheets/03_pseudo_states.py)
 - 15.4 [Subcontrols](https://github.com/JoeAnonimist/pyside6-blueprints-code/blob/master/code/15_qt_style_sheets/04_subcontrols.py)
@@ -161,24 +161,24 @@ All published chapter code lives in the [`code/`](./code) folder.
 - 24.4 [Resizable Tree Model - Inserting and Removing Nodes](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/24_MV_programming_qabstractitemmodel/04_resizable)
 
 ### 25. Model-View Programming - Delegates
-- 25.1 Using Item Data Roles to Customize Display(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/01_itemdataroles)
-- 25.2 Registering Standard Widgets with QItemEditorFactory(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/02_qitemeditorfactory/01_standard_widget)
-- 25.3 Registering Custom Widgets with QItemEditorFactory(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/02_qitemeditorfactory/02_custom_widget)
-- 25.4 Custom Display in QStyledItemDelegate(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/03_qstyleditemdelegate/01_customize_display)
-- 25.5 Custom Editors in QStyledItemDelegate(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/03_qstyleditemdelegate/02_customize_editor)
-- 25.6 Combining Display and Editing in Delegates(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/03_qstyleditemdelegate/03_combine_display_and_editing)
+- 25.1 [Using Item Data Roles to Customize Display[(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/01_itemdataroles)
+- 25.2 [Registering Standard Widgets with QItemEditorFactory[(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/02_qitemeditorfactory/01_standard_widget)
+- 25.3 [Registering Custom Widgets with QItemEditorFactory[(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/02_qitemeditorfactory/02_custom_widget)
+- 25.4 [Custom Display in QStyledItemDelegate[(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/03_qstyleditemdelegate/01_customize_display)
+- 25.5 [Custom Editors in QStyledItemDelegate[(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/03_qstyleditemdelegate/02_customize_editor)
+- 25.6 [Combining Display and Editing in Delegates[(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/03_qstyleditemdelegate/03_combine_display_and_editing)
 
 ### 26. Model-View Programming - Sorting, Filtering and Selection
-- 26.1 Implementing In-Place Sorting in Custom Models(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/01_sort_method_in_place)
-- 26.2 Non-Destructive Sorting in Custom Models(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/02_sort_method_nondestuctive)
-- 26.3 Automatic Sorting on Data Changes(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/03_automatic_sorting)
-- 26.4 Sorting with Proxy Models(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/04_proxy_model_sort)
-- 26.5 Baic Filtering with Proxy Models(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/05_proxy_model_filter)
-- 26.6 Custom Filtering with Proxy Models(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/06_custom%20proxy_model_filter)
-- 26.7 Selection Modes and Behaviors(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/07_selection_modes)
-- 26.8 Responding to Selection Changes(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/08_respond_to_selection_change)
-- 26.9 Sharing Selection Models Between Views(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/09_sharing_selection_models)
-- 26.10 Custom Selection Handling(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/10_custom_selection_handling)
+- 26.1 [Implementing In-Place Sorting in Custom Models](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/01_sort_method_in_place)
+- 26.2 [Non-Destructive Sorting in Custom Models](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/02_sort_method_nondestuctive)
+- 26.3 [Automatic Sorting on Data Changes](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/03_automatic_sorting)
+- 26.4 [Sorting with Proxy Models](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/04_proxy_model_sort)
+- 26.5 [Baic Filtering with Proxy Models](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/05_proxy_model_filter)
+- 26.6 [Custom Filtering with Proxy Models](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/06_custom%20proxy_model_filter)
+- 26.7 [Selection Modes and Behaviors](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/07_selection_modes)
+- 26.8 [Responding to Selection Changes](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/08_respond_to_selection_change)
+- 26.9 [Sharing Selection Models Between Views](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/09_sharing_selection_models)
+- 26.10 [Custom Selection Handling](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/10_custom_selection_handling)
 
 ### 27. Multithreading - `moveToThread`
 - 27.1 [Blocking the Qt GUI: How Not to Do It](https://github.com/JoeAnonimist/pyside6-blueprints-code/blob/master/code/27_multithreading_movetothread/01_block_gui_thread.py)
