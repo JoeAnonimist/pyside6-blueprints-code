@@ -161,12 +161,12 @@ All published chapter code lives in the [`code/`](./code) folder.
 - 24.4 [Resizable Tree Model - Inserting and Removing Nodes](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/24_MV_programming_qabstractitemmodel/04_resizable)
 
 ### 25. Model-View Programming - Delegates
-- 25.1 [Using Item Data Roles to Customize Display[(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/01_itemdataroles)
-- 25.2 [Registering Standard Widgets with QItemEditorFactory[(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/02_qitemeditorfactory/01_standard_widget)
-- 25.3 [Registering Custom Widgets with QItemEditorFactory[(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/02_qitemeditorfactory/02_custom_widget)
-- 25.4 [Custom Display in QStyledItemDelegate[(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/03_qstyleditemdelegate/01_customize_display)
-- 25.5 [Custom Editors in QStyledItemDelegate[(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/03_qstyleditemdelegate/02_customize_editor)
-- 25.6 [Combining Display and Editing in Delegates[(https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/03_qstyleditemdelegate/03_combine_display_and_editing)
+- 25.1 [Using Item Data Roles to Customize Display](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/01_itemdataroles)
+- 25.2 [Registering Standard Widgets with QItemEditorFactory](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/02_qitemeditorfactory/01_standard_widget)
+- 25.3 [Registering Custom Widgets with QItemEditorFactory](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/02_qitemeditorfactory/02_custom_widget)
+- 25.4 [Custom Display in QStyledItemDelegate](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/03_qstyleditemdelegate/01_customize_display)
+- 25.5 [Custom Editors in QStyledItemDelegate](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/03_qstyleditemdelegate/02_customize_editor)
+- 25.6 [Combining Display and Editing in Delegates](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/25_MV_programming_delegates/03_qstyleditemdelegate/03_combine_display_and_editing)
 
 ### 26. Model-View Programming - Sorting, Filtering and Selection
 - 26.1 [Implementing In-Place Sorting in Custom Models](https://github.com/JoeAnonimist/pyside6-blueprints-code/tree/master/code/26_MV_programming_sorting_filtering_selection/01_sort_method_in_place)
